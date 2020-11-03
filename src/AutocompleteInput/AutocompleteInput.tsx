@@ -10,9 +10,10 @@ type Props = {
   value?: string
   onValueChange?: (value: string) => void
   defaultValue?: string
+  placeholder?: string
 }
 
-const AutocompleteInput = ({ id = 'autocomplete', label, value, onValueChange, defaultValue, options = [] }: Props) => {
+const AutocompleteInput = ({ id = 'autocomplete', label, value, onValueChange, defaultValue, options = [], placeholder }: Props) => {
   const [inputValue, , onChange] = useInput(value, onValueChange, defaultValue)
   const displayOptions = useSearch(inputValue, options)
   return (
@@ -35,6 +36,7 @@ const AutocompleteInput = ({ id = 'autocomplete', label, value, onValueChange, d
             id={`${id}-input`}
             value={inputValue}
             onChange={onChange}
+            placeholder={placeholder}
           />
         </div>
         <ul role="listbox" aria-labelledby={`${id}-label`} id={`${id}-listbox`} aria-label="Suggestions">
