@@ -27,7 +27,7 @@
       "react-app/jest"
     ],
     "rules": {
-      "jsx-a11y/*": "off"
+      "jsx-a11y/role-has-required-aria-props": "off"
     }
   },
   "prettier": {
