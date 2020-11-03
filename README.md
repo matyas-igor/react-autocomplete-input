@@ -1,7 +1,7 @@
 # `react-autocomplete-input`
 
 - Input with autocomplete feature, built with [`React`](https://reactjs.org/) and [`styled-components`](https://styled-components.com/);
-- Build with [accessibility](https://www.w3.org/TR/wai-aria-practices/examples/combobox/aria1.1pattern/listbox-combo.html) in mind;
+- Build with [combobox accessibility](https://www.w3.org/TR/wai-aria-practices/examples/combobox/aria1.1pattern/listbox-combo.html) in mind;
 - Bootsrapped with [`create-react-app`](https://github.com/facebook/create-react-app), `typescript` and [`storybook`](https://github.com/storybookjs/storybook).
 
 ## Notes
@@ -16,21 +16,4 @@
 
 ---
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and [`storybook`](https://github.com/storybookjs/storybook).
