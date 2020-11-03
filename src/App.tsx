@@ -1,11 +1,12 @@
-import React from 'react';
+import React from 'react'
+import AutocompleteInput from './AutocompleteInput'
 
-function App() {
+const App = () => {
   return (
     <div>
-
+      <AutocompleteInput />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
