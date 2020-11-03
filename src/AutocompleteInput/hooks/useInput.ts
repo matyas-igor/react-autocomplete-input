@@ -21,11 +21,11 @@ export const useInput = (value?: string, onValueChange?: (value: string) => void
     if (value !== undefined && value !== valueRef.current) {
       setValue(value)
     }
-  }, [value])
+  }, [value, setValue])
 
   const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value)
-  }, [])
+  }, [setValue])
 
   return [inputValue, setValue, onChange]
 }

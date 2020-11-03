@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import { useInput } from './hooks/useInput'
 import { useSearch } from './hooks/useSearch'
 
@@ -13,7 +13,7 @@ type Props = {
 }
 
 const AutocompleteInput = ({ id = 'autocomplete', label, value, onValueChange, defaultValue, options = [] }: Props) => {
-  const [inputValue, setInputValue, onChange] = useInput(value, onValueChange, defaultValue)
+  const [inputValue, , onChange] = useInput(value, onValueChange, defaultValue)
   const displayOptions = useSearch(inputValue, options)
   return (
     <>

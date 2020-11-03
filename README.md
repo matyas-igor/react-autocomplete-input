@@ -12,6 +12,7 @@
 - Dropdown is always displayed on a bottom of input
   - Positioning library like [`popperjs`](https://github.com/popperjs/popper-core) can be used to display at top/bottom
 - Lots of properties are not implemented on purpose, like controlling menu state or rendering option item.
+- Not optimized for touch devices
 
 ---
 

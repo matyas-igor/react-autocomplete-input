@@ -1,9 +1,9 @@
 import { useMemo } from 'react'
+import * as Fuzzysort from 'fuzzysort'
 import fuzzysort from 'fuzzysort'
-import Result = Fuzzysort.Result
 
-const SEARCH_THRESHOLD = -100
-const SEARCH_LIMIT = 100
+const SEARCH_THRESHOLD = -Infinity
+const SEARCH_LIMIT = Infinity
 
 export const useSearch = (searchValue: string, options: string[]): string[] => {
   return useMemo<string[]>(() => {
@@ -17,7 +17,7 @@ export const useSearch = (searchValue: string, options: string[]): string[] => {
     // highlighting them with <strong />
     return results.map(result =>
       fuzzysort.highlight(
-        fuzzysort.single(searchValue, result.target) as Result,
+        fuzzysort.single(searchValue, result.target) as Fuzzysort.Result,
         '<strong>',
         '</strong>'
       ) || ''
