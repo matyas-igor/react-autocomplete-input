@@ -1,3 +1,6 @@
+export const BLACK_COLOR = '#000000'
+export const WHITE_COLOR = '#FFFFFF'
+
 export const BACKGROUND_GRAY_COLOR = '#f7f7f7'
 export const LINE_GRAY_COLOR = '#edeff0'
 export const ELEMENT_GRAY_COLOR = '#c8cccf'

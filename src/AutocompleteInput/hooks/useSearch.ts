@@ -11,16 +11,17 @@ export const useSearch = (searchValue: string, options: string[]): string[] => {
     const results = fuzzysort.go(searchValue, options, {
       threshold: SEARCH_THRESHOLD,
       limit: SEARCH_LIMIT,
-      allowTypo: true
+      allowTypo: true,
     })
 
     // highlighting them with <strong />
-    return results.map(result =>
-      fuzzysort.highlight(
-        fuzzysort.single(searchValue, result.target) as Fuzzysort.Result,
-        '<strong>',
-        '</strong>'
-      ) || ''
+    return results.map(
+      (result) =>
+        fuzzysort.highlight(
+          fuzzysort.single(searchValue, result.target) as Fuzzysort.Result,
+          '<strong>',
+          '</strong>'
+        ) || ''
     )
   }, [searchValue, options])
 }
