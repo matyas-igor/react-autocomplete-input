@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Meta } from '@storybook/react'
-import AutocompleteInput from './AutocompleteInput'
+import AutocompleteInput from '../src/AutocompleteInput'
 import { DOCTORS_OPTIONS, FRUITS_OPTIONS } from './fixtures'
 
 const StyledWrapper = styled.div`
