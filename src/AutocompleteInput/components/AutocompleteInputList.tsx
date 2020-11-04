@@ -1,6 +1,8 @@
 import React from 'react'
+import VirtualList, { ScrollAlignment, ScrollDirection } from 'react-small-virtual-list'
 import { StyledItem, StyledUl } from '../styled'
 
+const MAX_OPTIONS_AMOUNT = 5
 const OPTION_HEIGHT = 48
 
 type Props = {
@@ -13,22 +15,34 @@ type Props = {
 }
 
 const AutocompleteInputList = ({ id, options, optionIndex, isOpened, setOptionIndex, handleOptionSelect }: Props) => {
+  const maxHeight = Math.min(options.length, MAX_OPTIONS_AMOUNT) * OPTION_HEIGHT
   return (
     <StyledUl role="listbox" aria-labelledby={`${id}-label`} id={`${id}-listbox`} aria-label="Suggestions">
-      {isOpened && options.length > 0
-        ? options.map((option, idx) => (
+      {isOpened && options.length > 0 ? (
+        <VirtualList
+          width="100%"
+          height={maxHeight}
+          itemCount={options.length}
+          itemSize={OPTION_HEIGHT}
+          renderItem={({ index, style }) => (
             <StyledItem
-              key={idx}
-              $hovered={idx === optionIndex}
+              key={index}
+              style={style}
+              $hovered={index === optionIndex}
               role="option"
-              aria-selected={idx === optionIndex ? 'true' : 'false'}
-              onMouseOver={() => setOptionIndex(idx)}
+              aria-selected={index === optionIndex ? 'true' : 'false'}
+              onMouseOver={() => setOptionIndex(index)}
               onMouseOut={() => setOptionIndex(null)}
-              onMouseDown={() => handleOptionSelect(option.value)}
-              dangerouslySetInnerHTML={{ __html: option.html }}
+              onMouseDown={() => handleOptionSelect(options[index].value)}
+              dangerouslySetInnerHTML={{ __html: options[index].html }}
             />
-          ))
-        : null}
+          )}
+          scrollDirection={ScrollDirection.VERTICAL}
+          scrollToAlignment={ScrollAlignment.SMART}
+          scrollToIndex={optionIndex !== null ? optionIndex : undefined}
+          overscanCount={2}
+        />
+      ) : null}
     </StyledUl>
   )
 }
