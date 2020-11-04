@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react'
+import { useUpdateEffect } from 'react-use'
 import { useInput } from './hooks/useInput'
 import { useSearch } from './hooks/useSearch'
 import { StyledInput, StyledItem, StyledLabel, StyledUl, StyledWrapper } from './styled'
@@ -31,7 +32,14 @@ const AutocompleteInput = ({
   const [inputValue, setInputValue, onChange] = useInput(value, onValueChange, defaultValue)
   const [isMenuOpened, handleMenuOpen, handleMenuClose] = useFlag()
   const [optionIndex, setOptionIndex] = useState<number | null>(null)
+
+  // handle fuzzy options search
   const displayedOptions = useSearch(inputValue, options)
+
+  // handle clearing selected option on options change
+  useUpdateEffect(() => {
+    setOptionIndex(null)
+  }, [displayedOptions])
 
   // handle selecting/clearing option
   const handleOptionSelect = useCallback(
@@ -45,7 +53,7 @@ const AutocompleteInput = ({
     [onOptionSelect, setInputValue, setOptionIndex]
   )
 
-  // handle selected option index processing
+  // handle keyboard press processing
   const onKeyDown = useKeyboard(
     inputValue,
     optionIndex,
@@ -63,7 +71,7 @@ const AutocompleteInput = ({
       <StyledWrapper>
         <div
           role="combobox"
-          aria-expanded="false"
+          aria-expanded={isMenuOpened ? 'true' : 'false'}
           aria-haspopup="listbox"
           aria-owns={`${id}-listbox`}
           id={`${id}-combobox`}
@@ -77,7 +85,7 @@ const AutocompleteInput = ({
             id={`${id}-input`}
             value={
               isMenuOpened && optionIndex !== null && displayedOptions[optionIndex]
-                ? displayedOptions[optionIndex].text
+                ? displayedOptions[optionIndex].value
                 : inputValue
             }
             onChange={onChange}
@@ -94,10 +102,10 @@ const AutocompleteInput = ({
                   key={idx}
                   $hovered={idx === optionIndex}
                   role="option"
-                  aria-selected="false"
+                  aria-selected={idx === optionIndex ? 'true' : 'false'}
                   onMouseOver={() => setOptionIndex(idx)}
                   onMouseOut={() => setOptionIndex(null)}
-                  onMouseDown={() => handleOptionSelect(option.text)}
+                  onMouseDown={() => handleOptionSelect(option.value)}
                   dangerouslySetInnerHTML={{ __html: option.html }}
                 />
               ))

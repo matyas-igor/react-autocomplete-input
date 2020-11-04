@@ -5,8 +5,8 @@ import fuzzysort from 'fuzzysort'
 const SEARCH_THRESHOLD = -Infinity
 const SEARCH_LIMIT = Infinity
 
-export const useSearch = (searchValue: string, options: string[]): { text: string; html: string }[] => {
-  return useMemo<{ text: string; html: string }[]>(() => {
+export const useSearch = (searchValue: string, options: string[]): { value: string; html: string }[] => {
+  return useMemo<{ value: string; html: string }[]>(() => {
     // getting fuzzy search results
     const results = fuzzysort.go(searchValue, options, {
       threshold: SEARCH_THRESHOLD,
@@ -16,7 +16,7 @@ export const useSearch = (searchValue: string, options: string[]): { text: strin
 
     // highlighting them with <strong />
     return results.map((result) => ({
-      text: result.target || '',
+      value: result.target || '',
       html:
         fuzzysort.highlight(
           fuzzysort.single(searchValue, result.target) as Fuzzysort.Result,

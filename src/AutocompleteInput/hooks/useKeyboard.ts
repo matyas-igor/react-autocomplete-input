@@ -5,7 +5,7 @@ export const useKeyboard = (
   inputValue: string,
   optionIndex: number | null,
   setOptionIndex: (index: number | null) => void,
-  options: { text: string; html: string }[],
+  options: { value: string; html: string }[],
   handleOptionSelect: (value: string | null) => void,
   isMenuOpened: boolean,
   handleMenuOpen: () => void,
@@ -31,7 +31,7 @@ export const useKeyboard = (
             e.preventDefault()
             handleMenuClose()
             setOptionIndex(null)
-            handleOptionSelect(options[optionIndex].text)
+            handleOptionSelect(options[optionIndex].value)
           }
           break
         }
@@ -40,7 +40,12 @@ export const useKeyboard = (
           if (options.length > 0) {
             e.preventDefault()
             if (!isMenuOpened) {
+              handleMenuOpen()
+              setOptionIndex(options.length - 1)
+            } else if (optionIndex === null) {
+              setOptionIndex(options.length - 1)
             } else {
+              setOptionIndex(optionIndex - 1 < 0 ? options.length - 1 : optionIndex - 1)
             }
           }
           break
@@ -50,7 +55,12 @@ export const useKeyboard = (
           if (options.length > 0) {
             e.preventDefault()
             if (!isMenuOpened) {
+              handleMenuOpen()
+              setOptionIndex(0)
+            } else if (optionIndex === null) {
+              setOptionIndex(0)
             } else {
+              setOptionIndex(optionIndex + 1 > options.length - 1 ? 0 : optionIndex + 1)
             }
           }
           break
