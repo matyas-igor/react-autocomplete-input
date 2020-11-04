@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { FONT_FAMILY } from '../common/typography'
+import { FONT_FAMILY_DEFAULT } from '../common/typography'
 import {
   BACKGROUND_GRAY_COLOR,
   BLACK_COLOR,
@@ -18,7 +18,7 @@ export const StyledLabel = styled.label`
   color: ${BLACK_COLOR};
   font-size: 16px;
   line-height: 24px;
-  font-family: ${FONT_FAMILY};
+  font-family: ${FONT_FAMILY_DEFAULT};
   font-weight: 600;
 `
 
@@ -26,7 +26,7 @@ export const StyledInput = styled.input`
   color: ${BLACK_COLOR};
   font-size: 18px;
   line-height: 28px;
-  font-family: ${FONT_FAMILY};
+  font-family: ${FONT_FAMILY_DEFAULT};
   font-weight: 400;
 
   padding: 14px 20px;
@@ -69,7 +69,7 @@ export const StyledItem = styled.div<{ $hovered?: boolean }>`
   color: ${BLACK_COLOR};
   font-size: 18px;
   line-height: 28px;
-  font-family: ${FONT_FAMILY};
+  font-family: ${FONT_FAMILY_DEFAULT};
   font-weight: 400;
 
   padding: 10px 20px;

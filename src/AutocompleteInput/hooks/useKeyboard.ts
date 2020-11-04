@@ -29,7 +29,6 @@ export const useKeyboard = (
           if (options.length > 0 && isMenuOpened && optionIndex !== null) {
             e.preventDefault()
             handleMenuClose()
-            setOptionIndex(null)
             handleOptionSelect(options[optionIndex].value)
           }
           break
@@ -40,8 +39,8 @@ export const useKeyboard = (
             e.preventDefault()
             if (!isMenuOpened) {
               handleMenuOpen()
-              setOptionIndex(options.length - 1)
-            } else if (optionIndex === null) {
+            }
+            if (optionIndex === null) {
               setOptionIndex(options.length - 1)
             } else {
               setOptionIndex(optionIndex - 1 < 0 ? options.length - 1 : optionIndex - 1)
@@ -55,8 +54,8 @@ export const useKeyboard = (
             e.preventDefault()
             if (!isMenuOpened) {
               handleMenuOpen()
-              setOptionIndex(0)
-            } else if (optionIndex === null) {
+            }
+            if (optionIndex === null) {
               setOptionIndex(0)
             } else {
               setOptionIndex(optionIndex + 1 > options.length - 1 ? 0 : optionIndex + 1)

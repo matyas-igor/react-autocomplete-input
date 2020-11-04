@@ -1,1 +1,1 @@
-export const FONT_FAMILY = "'Montserrat', sans-serif"
+export const FONT_FAMILY_DEFAULT = "'Montserrat', sans-serif"
