@@ -8,6 +8,7 @@ Live demo: https://react-autocomplete-input.netlify.app/
 
 - Input with autocomplete feature, built with [`react`](https://reactjs.org/) and [`styled-components`](https://styled-components.com/);
 - Build with [combobox accessibility](https://www.w3.org/TR/wai-aria-practices/examples/combobox/aria1.1pattern/listbox-combo.html) in mind;
+- Has support of [virtual list](https://github.com/matyas-igor/react-small-virtual-list), so it can handle very long list of options;
 - Bootsrapped with [`create-react-app`](https://github.com/facebook/create-react-app), `typescript` and [`storybook`](https://github.com/storybookjs/storybook).
 
 ## Available Scripts
