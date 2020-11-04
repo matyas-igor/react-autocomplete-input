@@ -10,9 +10,11 @@ export const useKeyboard = (
   handleMenuOpen: () => void,
   handleMenuClose: () => void
 ): ((e: React.KeyboardEvent) => void) => {
+  // According to: https://www.w3.org/TR/wai-aria-practices/examples/combobox/aria1.1pattern/listbox-combo.html#kbd_label
   return useCallback(
     (e: React.KeyboardEvent) => {
       switch (e.key) {
+        // close menu if it's open, otherwise clear the input
         case 'Escape': {
           if (isMenuOpened) {
             e.preventDefault()
@@ -25,6 +27,7 @@ export const useKeyboard = (
           break
         }
 
+        // select chosen option
         case 'Enter': {
           if (options.length > 0 && isMenuOpened && optionIndex !== null) {
             e.preventDefault()
@@ -34,6 +37,7 @@ export const useKeyboard = (
           break
         }
 
+        // open menu if needed, select previous or last item
         case 'ArrowUp': {
           if (options.length > 0) {
             e.preventDefault()
@@ -49,6 +53,7 @@ export const useKeyboard = (
           break
         }
 
+        // open menu if needed, select next or first item
         case 'ArrowDown': {
           if (options.length > 0) {
             e.preventDefault()
