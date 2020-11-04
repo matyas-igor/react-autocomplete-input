@@ -22,5 +22,5 @@ export default {
 } as Meta
 
 export const Default = () => (
-  <AutocompleteInput options={FRUITS_OPTIONS} placeholder="Start typing “Apple” or “Orange” name…" />
+  <AutocompleteInput options={FRUITS_OPTIONS} placeholder="Start typing “Apple” or “Orange”…" />
 )
