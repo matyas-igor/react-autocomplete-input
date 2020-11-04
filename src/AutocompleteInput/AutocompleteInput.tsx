@@ -2,9 +2,10 @@ import React, { useCallback, useState } from 'react'
 import { useUpdateEffect } from 'react-use'
 import { useInput } from './hooks/useInput'
 import { useSearch } from './hooks/useSearch'
-import { StyledInput, StyledItem, StyledLabel, StyledUl, StyledWrapper } from './styled'
+import { StyledInput, StyledLabel, StyledWrapper } from './styled'
 import { useFlag } from './hooks/useFlag'
 import { useKeyboard } from './hooks/useKeyboard'
+import AutocompleteInputList from './components/AutocompleteInputList'
 
 type Props = {
   id?: string
@@ -66,10 +67,13 @@ const AutocompleteInput = ({
   )
 
   // handle change event from input
-  const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    onInputChange(e)
-    handleMenuOpen()
-  }, [handleMenuOpen, onInputChange])
+  const onChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      onInputChange(e)
+      handleMenuOpen()
+    },
+    [handleMenuOpen, onInputChange]
+  )
 
   return (
     <>
@@ -101,22 +105,14 @@ const AutocompleteInput = ({
             placeholder={placeholder}
           />
         </div>
-        <StyledUl role="listbox" aria-labelledby={`${id}-label`} id={`${id}-listbox`} aria-label="Suggestions">
-          {isMenuOpened && displayedOptions.length > 0
-            ? displayedOptions.map((option, idx) => (
-                <StyledItem
-                  key={idx}
-                  $hovered={idx === optionIndex}
-                  role="option"
-                  aria-selected={idx === optionIndex ? 'true' : 'false'}
-                  onMouseOver={() => setOptionIndex(idx)}
-                  onMouseOut={() => setOptionIndex(null)}
-                  onMouseDown={() => handleOptionSelect(option.value)}
-                  dangerouslySetInnerHTML={{ __html: option.html }}
-                />
-              ))
-            : null}
-        </StyledUl>
+        <AutocompleteInputList
+          id={id}
+          options={displayedOptions}
+          optionIndex={optionIndex}
+          isOpened={isMenuOpened}
+          setOptionIndex={setOptionIndex}
+          handleOptionSelect={handleOptionSelect}
+        />
       </StyledWrapper>
     </>
   )
