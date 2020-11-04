@@ -22,16 +22,17 @@ Open [http://localhost:6006](http://localhost:6006) to view it in the browser.
 ### `yarn build-storybook`
 
 Builds storybook in production mode.<br />
-Build is available inside `/storybook-static` directory.
+Static build is available inside `/storybook-static` directory.
 
 ## Notes and limitations
 
 - No UI library has been used on a purpose
-- Whole UI is simpliefied on a purpose as well
+- Whole UI is simplified on a purpose as well
 - No support for custom [render props](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce?gi=c13ea35cde72) (like in [`downshift`](https://github.com/downshift-js/downshift))
-- Dropdown is always displayed on a bottom of input
+- Dropdown is always displayed at the bottom of the input
   - Positioning library like [`popperjs`](https://github.com/popperjs/popper-core) can be used to display at top/bottom
-- Lots of properties are not implemented on purpose, like controlling menu state or rendering option item.
+  - Open/close animations for dropdown could be added as well
+- Lots of properties are not implemented on purpose, like controlling menu state or rendering option item
 - Not optimized for touch devices
 
 ---
