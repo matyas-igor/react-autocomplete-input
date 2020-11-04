@@ -1,8 +1,28 @@
 # `react-autocomplete-input`
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4d3b35d6-eb77-44a5-bb52-47840dcbcbff/deploy-status)](https://app.netlify.com/sites/react-autocomplete-input/deploys)
+
+Live demo: https://react-autocomplete-input.netlify.app/
+
+![Screen Shot 2020-11-04 at 20 30 54](https://user-images.githubusercontent.com/3536796/98162001-f6612000-1ee0-11eb-9c1d-b2e6c5fac661.png)
+
 - Input with autocomplete feature, built with [`react`](https://reactjs.org/) and [`styled-components`](https://styled-components.com/);
 - Build with [combobox accessibility](https://www.w3.org/TR/wai-aria-practices/examples/combobox/aria1.1pattern/listbox-combo.html) in mind;
 - Bootsrapped with [`create-react-app`](https://github.com/facebook/create-react-app), `typescript` and [`storybook`](https://github.com/storybookjs/storybook).
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `yarn storybook`
+
+Starts storybook in the development mode with hot-reload.<br />
+Open [http://localhost:6006](http://localhost:6006) to view it in the browser.
+
+### `yarn build-storybook`
+
+Builds storybook in production mode.<br />
+Build is available inside `/storybook-static` directory.
 
 ## Notes and limitations
 
