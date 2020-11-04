@@ -80,6 +80,11 @@ export const StyledItem = styled.div<{ $hovered?: boolean }>`
   background-color: ${({ $hovered }) => ($hovered ? SECONDARY_COLOR : WHITE_COLOR)};
 
   cursor: pointer;
+  
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
 
   & > strong {
     color: ${PRIMARY_COLOR};
