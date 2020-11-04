@@ -15,7 +15,7 @@ const StyledForm = styled.form`
 
 export default {
   title: 'AutocompleteInput',
-  parameters: { layout: 'centered' },
+  parameters: { docs: { page: null }, layout: 'centered' },
   decorators: [
     (Story) => (
       <StyledWrapper>
