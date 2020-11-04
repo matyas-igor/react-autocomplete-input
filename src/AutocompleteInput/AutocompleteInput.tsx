@@ -29,7 +29,7 @@ const AutocompleteInput = ({
   options = [],
   onOptionSelect,
 }: Props) => {
-  const [inputValue, setInputValue, onChange] = useInput(value, onValueChange, defaultValue)
+  const [inputValue, setInputValue, onInputChange] = useInput(value, onValueChange, defaultValue)
   const [isMenuOpened, handleMenuOpen, handleMenuClose] = useFlag()
   const [optionIndex, setOptionIndex] = useState<number | null>(null)
 
@@ -64,6 +64,12 @@ const AutocompleteInput = ({
     handleMenuOpen,
     handleMenuClose
   )
+
+  // handle change event from input
+  const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    onInputChange(e)
+    handleMenuOpen()
+  }, [handleMenuOpen, onInputChange])
 
   return (
     <>

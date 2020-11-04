@@ -1,5 +1,4 @@
-import React, { useCallback, useState } from 'react'
-import { useUpdateEffect } from 'react-use'
+import React, { useCallback } from 'react'
 
 export const useKeyboard = (
   inputValue: string,
@@ -11,7 +10,7 @@ export const useKeyboard = (
   handleMenuOpen: () => void,
   handleMenuClose: () => void
 ): ((e: React.KeyboardEvent) => void) => {
-  const onKeyDown = useCallback(
+  return useCallback(
     (e: React.KeyboardEvent) => {
       switch (e.key) {
         case 'Escape': {
@@ -67,8 +66,15 @@ export const useKeyboard = (
         }
       }
     },
-    [options]
+    [
+      options,
+      optionIndex,
+      isMenuOpened,
+      inputValue,
+      handleMenuOpen,
+      handleMenuClose,
+      setOptionIndex,
+      handleOptionSelect,
+    ]
   )
-
-  return onKeyDown
 }
