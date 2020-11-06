@@ -75,6 +75,12 @@ const AutocompleteInput = ({
     [handleMenuOpen, onInputChange]
   )
 
+  // handle blur event on input
+  const onBlur = useCallback(() => {
+    handleMenuClose()
+    setOptionIndex(null)
+  }, [handleMenuClose, setOptionIndex])
+
   return (
     <>
       <StyledLabel id={`${id}-label`}>{label}</StyledLabel>
@@ -101,7 +107,7 @@ const AutocompleteInput = ({
             onChange={onChange}
             onKeyDown={onKeyDown}
             onFocus={handleMenuOpen}
-            onBlur={handleMenuClose}
+            onBlur={onBlur}
             placeholder={placeholder}
           />
         </div>
